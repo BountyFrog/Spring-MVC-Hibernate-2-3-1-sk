@@ -41,7 +41,8 @@ public class UserController {
     }
 
     @GetMapping("edit")
-    public String edit(@ModelAttribute("user") User user) {
+    public String edit(@ModelAttribute("user") User user, Model model) {
+        model.addAttribute("user", userService.findOne(user.getId()));
         return "/users/edit";
     }
 
